@@ -104,7 +104,7 @@ python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 # Update .env with your GOOGLE_API_KEYS (comma-separated)
-python -m uvicorn app.main:app --reload
+python -m uvicorn main:app --reload
 ```
 
 ### **2. Frontend Setup**
