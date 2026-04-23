@@ -50,7 +50,7 @@ def read_web_page(url: str) -> str:
         }
         
         # Using httpx with a realistic timeout and follow redirects
-        with httpx.Client(headers=headers, timeout=12.0, follow_redirects=True) as client:
+        with httpx.Client(headers=headers, timeout=1, follow_redirects=True) as client:
             response = client.get(url)
             
             if response.status_code == 403:

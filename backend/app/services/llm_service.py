@@ -42,7 +42,7 @@ Context:
             for attempt in range(2):
                 try:
                     llm = ChatGoogleGenerativeAI(
-                        model="gemini-2.0-flash", # Using 2.0-flash as it's more stable/available
+                        model="gemini-2.5-flash", # Using 2.5-flash as it's more stable/available
                         temperature=0.3,
                         google_api_key=current_key
                     )
