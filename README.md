@@ -5,7 +5,7 @@
 [![CrewAI](https://img.shields.io/badge/CrewAI-Orchestration-orange?style=for-the-badge)](https://www.crewai.com/)
 [![Gemini](https://img.shields.io/badge/Google_Gemini-2.5_Flash-blue?style=for-the-badge&logo=google-gemini)](https://ai.google.dev/)
 [![Pinecone](https://img.shields.io/badge/Pinecone-Vector_DB-black?style=for-the-badge)](https://www.pinecone.io/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
 > **DocMind transforms static documents into dynamic, verified intelligence. It isn't just a RAG bot—it's an autonomous AI workforce that audits, visualizes, and expands your research with surgical precision.**
 
@@ -21,7 +21,7 @@ In an era of generic LLM wrappers, DocMind provides a specialized **Research & V
 | **Conflict Resolution** | **Evolution-Aware**: Distinguishes between outdated web data and recent document claims (e.g., Target GPAs). | Often flags temporal differences as "hallucinations". |
 | **Knowledge Display** | **Physics-Based Graphs**: Interactive SVG entity-relationship mapping. | Text-only hierarchical responses. |
 | **Orchestration** | **Multi-Agent Autonomy**: Specialized agents (Auditor, Researcher, Recruiter) use tools in loops. | Single-shot prompt execution. |
-| **Reliability** | **Key Rotation & Persistence**: Automatic key cycling and PostgreSQL payload caching. | Subject to standard individual quota limits. |
+| **Reliability** | **Key Rotation & Persistence**: Automatic key cycling and **Supabase-managed** payload caching. | Subject to standard individual quota limits. |
 
 ---
 
@@ -45,7 +45,8 @@ DocMind is built on a modular, decoupled architecture designed for high throughp
 - **Key Rotator**: Proprietary logic to cycle between multiple API keys, handling `BAD_RECORD_MAC` and rate limits automatically.
 
 ### **4. Data & Persistence Layer**
-- **Relational (PostgreSQL)**: Stores user metadata, document history, and a **Feature Cache** (JSONB) to persist AI results across sessions.
+- **Platform (Supabase)**: Provides the relational backbone (PostgreSQL), high-performance connection pooling, and simplified scaling for document metadata.
+- **Feature Cache**: Uses Supabase's JSONB capabilities to persist AI results (Knowledge Graphs, Verification reports) across sessions.
 - **Vector (Pinecone)**: Serverless vector indexing with **Isolated Namespaces** per document/user.
 
 ---
@@ -84,6 +85,7 @@ DocMind is built on a modular, decoupled architecture designed for high throughp
 - **FastAPI**: Chosen for its native `async` support—essential for long-running agentic tasks.
 - **CrewAI**: Provides **Role-Based Autonomy**, making agents more effective than simple LLM chains.
 - **Gemini Flash**: 1M+ token context window allows processing entire technical papers in a single pass.
+- **Supabase**: Chosen as the **Backend-as-a-Service (BaaS)** provider because it offers a production-grade PostgreSQL environment with built-in connection pooling, high availability, and native JSONB support which is critical for our "Feature Caching" system.
 - **Pinecone**: Serverless architecture scales to millions of vectors without infrastructure management.
 - **Trafilatura**: High-precision text extraction from web pages, stripping out ads and boilerplate.
 
